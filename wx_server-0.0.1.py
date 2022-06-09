@@ -179,6 +179,6 @@ if __name__ == '__main__':
     #                            print(wx_output)
                                 tx_output = my_call + ' ' + request_call + ' ' + ' WX FOR ' + requested_grid + wx_output
                                 print(tx_output)
-    #                            send_message(tx_output)
+                                send_message(tx_output)
                         except Exception as e:
                             print(e)

@@ -34,6 +34,8 @@ WIND DEG 297 DEG
 
 This message would take 3 minutes 15 seconds to complete on JS8Call in normal speed mode.
 
+The JS8Net library is courtesy of Jeff Francis, the project is at: https://github.com/jfrancis42/js8net
+
 Installation
 
 Assuming a working JS8Call application:

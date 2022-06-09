@@ -44,9 +44,12 @@ Download JS8Net.py and wx_server.x.x.x.py
 
 Extract into a folder
 
-Open wx_server.x.x.x 
+Edit wx_server.x.x.x.py
+
 Select unit type by uncommenting the desired unit type.
+
 Paste your API_key from openweathermap.org in API_key
 
 Start JS8Call
+
 Start wx_server.x.x.x.py in command line or IDE

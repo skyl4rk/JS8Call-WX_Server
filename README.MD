@@ -12,9 +12,9 @@ Where "?WX" is the text which triggers a response from the weather forecast serv
 
 Example weather forecast:
 
-2022-06-10 00:00:00
+WX FOR EN61EV
 
-EN61EV
+2022-06-10 00:00:00
 
 SCATTERED CLOUDS
 

@@ -131,7 +131,7 @@ if __name__ == '__main__':
     unit_type = 'imperial'
 
     # Set the API_key to a key registered under your name at openweathermap.org:
-    API_key = "b8daf768cd03d5035a15728377db75f9"
+    API_key = "Your API key here"
 
 ################
 

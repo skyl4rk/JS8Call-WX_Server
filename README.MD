@@ -50,8 +50,7 @@ The JS8Call WX_Server could be a very valuable service provided by amateur radio
 
 Use Case: Some mountain or remote areas have no cell phone data and poor VHF radio reception. People who live or travel in these off-grid areas may have limited access to weather forecasts.  Using the JS8Call WX_Server would allow amateur operators who are off-grid to have a local weather forecast using HF radio connections, which are more likely to be recieved from remote areas.
 
-Use Case: In the case of an emergency where telecommunication systems are not functional, amateur operators outside the blackout area using the JS8Call WX_Server could provide amateur operators in the blackout area a source of weather information when other providers are no longer functioning.  The experience in Nashville when telecommunications went down is a good example of the type of event where a JS8Call WX_Server would be valuable.
-
+Use Case: In the case of an emergency where telecommunication systems are not functional, amateur operators outside the blackout area using the JS8Call WX_Server could provide amateur operators in the blackout area a source of weather information when other providers are no longer functioning.  The experience in Nashville when telecommunications went down is a good example of the type of event where a JS8Call WX_Server would be valuable. Amateur operators can provide a valuable emergency service using this application.
 
 
 Installation

@@ -1,0 +1,90 @@
+Installation of JS8Call WX_Server on a Raspberry Pi
+
+This installation assumes a running installation of JS8Call.
+
+In JS8Call, go to File: Settings: Reporting: API
+
+Check: "Allow setting station information (Grid, Info, Status, etc) from the APIs
+
+Check: "Enable TCP" 
+
+Check: "Accept TCP"
+
+TCP Server Hostname 127.0.0.1
+
+TCP Server Port 2442
+
+Click OK
+
+Open Terminal
+
+sudo apt install virtualenv
+
+mkdir Environments
+
+cd Environments
+
+virtualenv -p python3 wx_env
+
+cd wx_env
+
+source bin/activate
+
+pip install maidenhead
+pip install requests
+
+Close the terminal
+
+From menu, open Thonny
+
+In upper right corner, click on Switch to Regular Mode
+
+Close and restart Thonny
+
+Tools: Options: Interpreter
+
+Select Alternative Python 3 interpreter or virtual environment
+
+Select the three dots to the right of the drop down box
+
+move to /pi/Environments/wx_env/bin/python3.9, Select OK.
+
+
+In browser, go to https://github.com/skyl4rk/JS8Call-WX_Server
+
+Click on green button with "Code"
+
+Download zip
+
+If xarchiver does not open, go to Downloads and click on the zip file.
+Action: Extract
+
+Select /pi/Environments/wx_env
+
+Open
+
+Extract
+
+Make sure JS8Call is running!
+
+In Thonny, File: Open:  
+/pi/Environments/wx_env/JS8Call-WX_Server-main/wx_server-x.x.x
+
+Click the Green arrow to start the program.
+
+You should see: 
+
+Connecting to JS8Call...
+Connected.
+my_call: <your callsign as identified in JS8Call>
+
+Get an API_key from https://home.openweathermap.org/users/sign_up
+
+When you recieve your API_key (probably in an email), go to line +/- 134 of wx_server-x.x.x and paste it within the quotes of API_key = "Your API key Here"
+
+Click on the green arrow to run the program. 
+
+To check if it is running, go to JS8Call and click on Heartbeat.  You should see any calls directed to you print out in the Shell box in Thonny.
+
+
+

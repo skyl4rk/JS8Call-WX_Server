@@ -18,15 +18,20 @@ import maidenhead as mh
 
 def openweathermap_wx_api_call(forecast_gridsquare, forecast_day, user_API_key, display_unit_type):
 # Convert from requested day to number of 3 hour weather periods as provided in API
+    print('forecast_day: ' + str(forecast_day))
     forecast_period = int(forecast_day * 8)
     if(forecast_period > 39):
         forecast_period = 39
     if(forecast_period < 0):
         forecast_period = 0
 # Convert maidenhead grid to latitude and longitude
-    coords = mh.to_location(forecast_gridsquare)
-    latitude = coords[0]
-    longitude = coords[1]
+    try:
+        coords = mh.to_location(forecast_gridsquare)
+        latitude = coords[0]
+        longitude = coords[1]
+    except Exception as e:
+        print(e)
+
 # Set up unit display type    
     if(display_unit_type == 'metric'):
         temp_unit = 'C'
@@ -37,7 +42,12 @@ def openweathermap_wx_api_call(forecast_gridsquare, forecast_day, user_API_key, 
 # API Connection to Openweathermap.org
     base_url = "http://api.openweathermap.org/data/2.5/forecast?"
     Final_url = base_url + "appid=" + user_API_key + "&lat=" + str(latitude) + "&lon=" + str(longitude) + "&units=" + unit_type 
-    forecast_json = requests.get(Final_url).json()
+
+    try:
+        forecast_json = requests.get(Final_url).json()
+    except Exception as e:
+        print(e)
+
 # Build WX_FORECAST
     grid = forecast_gridsquare + '\n'
 # Pull date and time string out of json
@@ -126,8 +136,8 @@ my_call = get_callsign()
 print('my_call: ' + my_call)
 print()
 
-wx_trigger = 'HEARTBEAT'
-#wx_trigger = 'WX?'
+#wx_trigger = 'HEARTBEAT'
+wx_trigger = 'WX?'
 #    wind_trigger = 'WIND?'
 
 ##################
@@ -147,26 +157,29 @@ while(True):
                 directed_message_to_my_call = rx['params']['TEXT']
 # Split the recieved directed message
                 split_message = re.split('\s', directed_message_to_my_call)
-# Print current local time of directed message (now)
-                t = time.localtime()
-                current_time = time.strftime("%H:%M:%S", t)
-                print(current_time)
 # Search for trigger
                 item_count = len(split_message)
                 for i in range(item_count):
 #                    print(split_message[i])
-                    try:
-                        if split_message[i] == wx_trigger:
-                            request_call = split_message[i-2]
-                            request_grid = split_message[i+1]
-                            request_day = split_message[i+2]
-#                            request_grid = 'EN62'
-#                            request_day = 1
+#                    try:
+                    if split_message[i] == wx_trigger:
+                        request_call = split_message[i-2]
+                        request_grid = split_message[i+1]
+                        request_day = split_message[i+2]
+# Print current local time of directed message (now)
+                        t = time.localtime()
+                        current_time = time.strftime("%H:%M:%S", t)
+                        print(current_time)
+#                        request_grid = 'EN62'
+#                        request_day = 2
+                        if (type(request_day) == int):
+                            if not(request_day >= 0 and request_day < 6):
+                                request_day = 1
                             wx_output = openweathermap_wx_api_call(request_grid, request_day, API_key, unit_type)
                             print(wx_output)
                             tx_output = request_call + ' ' + wx_output
                             print(tx_output)
                             send_message(tx_output)
-                    except Exception as e:
-                        print(e)
+#                    except Exception as e:
+#                        print(e)
 

@@ -8,7 +8,7 @@
 unit_type = 'imperial'
 
 # Set the API_key to a key registered under your name at openweathermap.org:
-API_key = "Your API key here"
+API_key = "Add Your API_key here"
 
 # End User Definition Area
 ##################################
@@ -196,7 +196,7 @@ while(True):
                                 request_day = 1
                             wx_output = openweathermap_wx_api_call(request_grid, request_day, API_key, unit_type)
 #                            print(wx_output)
-                            tx_output = request_call + ' ' + wx_output
+                            tx_output = my_call +': ' + request_call + ' ' + wx_output
                             print(tx_output)
                             send_message(tx_output)
 #                    except Exception as e:

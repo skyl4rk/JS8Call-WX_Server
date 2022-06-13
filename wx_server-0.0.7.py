@@ -8,7 +8,7 @@
 unit_type = 'imperial'
 
 # Set the API_key to a key registered under your name at openweathermap.org:
-API_key = "Add Your API key here"
+API_key = "Your API key here"
 
 # End User Definition Area
 ##################################
@@ -148,8 +148,12 @@ my_call = get_callsign()
 print(my_call + ' WX Server Active...')
 
 # Text to trigger forecast transmission
-wx_trigger = 'HEARTBEAT'
-#wx_trigger = 'WX?'
+# Testing
+#wx_trigger = 'HEARTBEAT'
+# End Test
+
+wx_trigger = 'WX?'
+
 #    wind_trigger = 'WIND?'
 
 ##################
@@ -177,7 +181,7 @@ while(True):
                     if split_message[i] == wx_trigger:
                         request_call = split_message[i-2]
                         request_grid = split_message[i+1]
-                        request_day = split_message[i+2]
+                        request_day = int(split_message[i+2])
 # Print current local time of directed message (now)
                         t = time.localtime()
                         current_time = time.strftime("%H:%M:%S", t)

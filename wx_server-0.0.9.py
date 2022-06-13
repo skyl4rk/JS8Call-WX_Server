@@ -181,7 +181,7 @@ while(True):
                     if split_message[i] == wx_trigger:
                         request_call = split_message[0]
                         request_grid = split_message[i+1]
-                        request_day = int(split_message[i+2])
+                        request_day = split_message[i+2]
 # Print current local time of directed message (now)
                         t = time.localtime()
                         current_time = time.strftime("%H:%M:%S", t)
@@ -198,7 +198,7 @@ while(True):
                             request_day = 0
                         wx_output = openweathermap_wx_api_call(request_grid, request_day, API_key, unit_type)
 #                            print(wx_output)
-                        tx_output = my_call + ' ' + request_call + ' ' + wx_output
+                        tx_output = request_call + ' ' + wx_output
                         print(tx_output)
                         send_message(tx_output)
 #                    except Exception as e:

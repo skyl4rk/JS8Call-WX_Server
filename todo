@@ -5,8 +5,8 @@ Reduce sent character count
 Get NOAA API
 Add tornado warnings, other warnings
 Add WIND? service
-Remove Spots from script?
+DONE Remove Spots from script?
 Increase sleep time?
 Review print messages, error messages, more? less?
 tx_output: do I need a colon after my_call?
-Check format of output, need newlines?
+DONE Check format of output, need newlines?

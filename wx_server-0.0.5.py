@@ -6,7 +6,7 @@
 unit_type = 'imperial'
 
 # Set the API_key to a key registered under your name at openweathermap.org:
-API_key = "b8daf768cd03d5035a15728377db75f9"
+API_key = "Your_API_key_Here"
 
 import sys
 import time

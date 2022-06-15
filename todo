@@ -1,18 +1,18 @@
 ONGOING Bug Detection
 DONE Bad request check
-Error handling, after testing a bit more
+DONE FOR NOW Error handling, after testing a bit more
 Reduce sent character count, if possible
 Get NOAA API
 Add tornado warnings, other warnings
 DONE Add WIND? service
 DONE Remove Spots from script?
 NOT NEEDED Increase sleep time?
-Review print messages, error messages, more? less?
+DONE Review print messages, error messages, more? less?
 DONE, CHECKING tx_output: do I need a colon after my_call?
 DONE Check format of output, need newlines?
 DONE, CHECKING Add a default grid variable
 DONE, CHECKING Use send_directed_message() does it still work?
-Change WX function to WIND function format
+DONE Change WX function to WIND function format
 Reduce duplication in script
 Enable/Disable services
 Accept coordinates as lat and long

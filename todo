@@ -6,12 +6,13 @@ Get NOAA API
 Add tornado warnings, other warnings
 DONE Add WIND? service
 DONE Remove Spots from script?
-Increase sleep time?
+NOT NEEDED Increase sleep time?
 Review print messages, error messages, more? less?
-tx_output: do I need a colon after my_call?
+DONE, CHECKING tx_output: do I need a colon after my_call?
 DONE Check format of output, need newlines?
-Add a default grid variable
-Use send_directed_message() does it still work?
+DONE, CHECKING Add a default grid variable
+DONE, CHECKING Use send_directed_message() does it still work?
 Change WX function to WIND function format
 Reduce duplication in script
 Enable/Disable services
+Accept coordinates as lat and long

@@ -14,3 +14,4 @@ Add a default grid variable
 Use send_directed_message() does it still work?
 Change WX function to WIND function format
 Reduce duplication in script
+Enable/Disable services

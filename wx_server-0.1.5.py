@@ -10,8 +10,8 @@
 unit_type = 'imperial'
 
 # Set the API_key to a key registered under your name at openweathermap.org:
-API_key == "Your_API_key_Here"
-#API_key == "Your_API_key_Here"
+API_key = "Your_API_key_Here"
+#API_key = "Your_API_key_Here"
 
 # If no grid is specified or of the wrong format, then a default grid will be used.
 # Set the default maidenhead gridsquare here:
@@ -72,7 +72,7 @@ def openweathermap_wind_api_call(forecast_gridsquare, forecast_day, user_API_key
                 tx_string += 'pressure ' + str(forecast_json['list'][count]['main']['pressure']) + ' mbar' + '\n'
                 tx_string += 'wind ' + str(round(forecast_json['list'][count]['wind']['speed'])) + speed_unit + '\n'
                 tx_string += 'gust ' + str(round(forecast_json['list'][count]['wind']['gust'])) + speed_unit + '\n'
-                tx_string += 'deg ' + str(forecast_json['list'][count]['wind']['deg']) + ' deg' + '\n\n\r'
+                tx_string += 'deg ' + str(forecast_json['list'][count]['wind']['deg']) + ' deg' + '\n\r'
         except Exception as e:
             print(e)
     print(request_callsign + ' ' + tx_string)

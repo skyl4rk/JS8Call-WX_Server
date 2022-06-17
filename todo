@@ -2,8 +2,8 @@ ONGOING Bug Detection
 DONE Bad request check
 DONE FOR NOW Error handling, after testing a bit more
 Reduce sent character count, if possible
-Get NOAA API
-Add tornado warnings, other warnings
+DONE Get NOAA API
+DONE Add tornado warnings, other warnings
 DONE Add WIND? service
 DONE Remove Spots from script?
 NOT NEEDED Increase sleep time?

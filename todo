@@ -1,7 +1,6 @@
 ONGOING Bug Detection
 DONE Bad request check
 DONE FOR NOW Error handling, after testing a bit more
-Reduce sent character count, if possible
 DONE Get NOAA API
 DONE Add tornado warnings, other warnings
 DONE Add WIND? service
@@ -13,6 +12,8 @@ DONE Check format of output, need newlines?
 DONE, CHECKING Add a default grid variable
 DONE, CHECKING Use send_directed_message() does it still work?
 DONE Change WX function to WIND function format
-Reduce duplication in script
-Enable/Disable services
+ONGOING Reduce duplication in script
+DONE Enable/Disable services
 Accept coordinates as lat and long
+Error handling in email sections
+Reduce sent character count, if possible

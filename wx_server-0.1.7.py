@@ -10,7 +10,7 @@
 unit_type = 'imperial'
 
 # Set the API_key to a key registered under your name at openweathermap.org:
-API_key = "b8daf768cd03d5035a15728377db75f9"
+API_key = "Your_API_Key_Here"
 
 # If no grid is specified or of the wrong format, then a default grid will be used.
 # Set the default maidenhead gridsquare here:
@@ -232,7 +232,7 @@ def get_maximum_gust_speed_from_day(day_of_interest, forecast_data):
     return new_max_gust_speed
 
 # Check for API key
-if API_key == "Your_API_key_Here":
+if API_key == "Your_API_Key_Here":
     print('Please enter your openweathermap.org API key in script in User Definition Area.')
 
 ########################

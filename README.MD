@@ -34,6 +34,14 @@ WIND DEG 297 DEG
 
 This message would take 3 minutes 15 seconds to complete on JS8Call in normal speed mode.
 
+The JS8Call WX_Server will also send a WIND? forecast in a similar manner:
+
+WIND? "grid" "days in future (0-5)"
+
+If configured, it will also allow sending an email out:
+
+EMAIL? "email address" "message" 
+
 The JS8Net library is courtesy of Jeff Francis, the project is at: https://github.com/jfrancis42/js8net
 
 Weather forecaasts are provided by openweathermap.com, under the following licenses: https://creativecommons.org/licenses/by-sa/4.0/ and https://opendatacommons.org/licenses/odbl/
@@ -58,6 +66,7 @@ Installation
 Assuming a working JS8Call application:
 
 pip install maidenhead
+pip install requests
 
 Download JS8Net.py and wx_server.x.x.x.py
 
@@ -68,6 +77,8 @@ Edit wx_server.x.x.x.py
 Select unit type by uncommenting the desired unit type.
 
 Paste your API_key from openweathermap.org in API_key
+
+Set the default grid, if desired 
 
 Start JS8Call
 

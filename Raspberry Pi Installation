@@ -80,11 +80,12 @@ my_call: <your callsign as identified in JS8Call>
 
 Get an API_key from https://home.openweathermap.org/users/sign_up
 
-When you recieve your API_key (probably in an email), go to line +/- 134 of wx_server-x.x.x and paste it within the quotes of API_key = "Your API key Here"
+When you recieve your API_key (probably in an email), go to line +/- 13 of wx_server-x.x.x and paste it within the quotes of API_key = "Your API key Here"
 
 Click on the green arrow to run the program. 
 
-To check if it is running, go to JS8Call and click on Heartbeat.  You should see any calls directed to you print out in the Shell box in Thonny.
+To Uninstall:
 
+Delete the folder ~/Environments/wx_env
 
 

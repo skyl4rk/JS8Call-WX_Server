@@ -84,4 +84,4 @@ Start JS8Call
 
 Start wx_server.x.x.x.py in command line or IDE
 
-The script will print messages directed to your callsign. If the trigger WX? is detected, it will get a weather forecast and send it to the requesting operator.
+If the trigger WX? is detected, it will get a weather forecast and send it to the requesting operator.

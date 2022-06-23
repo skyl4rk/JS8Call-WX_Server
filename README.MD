@@ -50,16 +50,11 @@ Use Case: Mariners sailing offshore have limited weather forecast options, and a
 
 If there were a number of amateur operators along the coast running the WX_Server on JS8Call, mariners would be able to request a local weather forecast for their location, as well as locations in the future as they travel.  The radio requirements for accessing this service are low, a qrp transciever, a modest computer such as a Raspberry Pi 4 and a dipole or whip antenna tuned to a ham band.  20 and 40 meter bands would be a good options, 20 m during the day, 40 m at other times.
 
-My goal for this script is to add a detailed wind forecast showing wind speed, gust speed and wind direction every three hours for a 24 hour period, with the ability to request up to 5 days into the future. 
-
-A companion to this script would be a script which converts latitude and longitude to a maidenhead grid identifier and then sends the wind or weather request over JS8Call.  This script would be used by the mariner to input his latitude and longitude and with a mouse click, request a forecast.
-
 The JS8Call WX_Server could be a very valuable service provided by amateur radio operators to mariner amateur operators.
 
 Use Case: Some mountain or remote areas have no cell phone data and poor VHF radio reception. People who live or travel in these off-grid areas may have limited access to weather forecasts.  Using the JS8Call WX_Server would allow amateur operators who are off-grid to have a local weather forecast using HF radio connections, which are more likely to be recieved from remote areas.
 
 Use Case: In the case of an emergency where telecommunication systems are not functional, amateur operators outside the blackout area using the JS8Call WX_Server could provide amateur operators in the blackout area a source of weather information when other providers are no longer functioning.  The experience in Nashville when telecommunications went down is a good example of the type of event where a JS8Call WX_Server would be valuable. Amateur operators can provide a valuable emergency service using this application.
-
 
 Installation
 General installation instructions

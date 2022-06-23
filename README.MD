@@ -2,7 +2,7 @@ JS8Call WX_Server
 
 JS8Call is a low power digital mode application which uses amateur radio to provide keyboard to keyboard communication. It can be used to exchange text messages and for real-time text chat. 
 
-JS8Call WX_Server is a python script which connects to JS8Call and runs at the same time that JS8Call is running.  It allows an operator of a JS8Call station connected to the internet to provide a brief weather forecast for any maidenhead grid location to a an operator requesting a forecast.
+JS8Call WX_Server is a python script which connects to JS8Call and runs at the same time that JS8Call is running.  It allows an operator of a JS8Call station connected to the internet to provide a brief weather forecast for any latitude/longitude or maidenhead grid location to a an operator requesting a forecast.
 
 The requesting operator sends a directed call to the weather forecast server:
 
@@ -62,6 +62,8 @@ Use Case: In the case of an emergency where telecommunication systems are not fu
 
 
 Installation
+General installation instructions
+(See Raspberry Pi Installation file for detailed instructions)
 
 Assuming a working JS8Call application:
 
@@ -72,13 +74,16 @@ Download JS8Net.py and wx_server.x.x.x.py
 
 Extract into a folder
 
-Edit wx_server.x.x.x.py
+Edit wx_server.x.x.x.py:
 
 Select unit type by uncommenting the desired unit type.
 
 Paste your API_key from openweathermap.org in API_key
 
 Set the default grid, if desired 
+
+Enter SMTP email information
+Enable Email
 
 Start JS8Call
 
@@ -87,3 +92,5 @@ Start wx_server.x.x.x.py in command line or IDE
 If the trigger WX? is detected, it will get a weather forecast and send it to the requesting operator.
 
 If you install a wx_server at your station, please consider adding @WX to your groups in JS8Call, File: Settings: Station: Callsign Groups.
+
+An optional help_txt.py script and help.txt file are provided.  See Raspberry Pi Installation file for instructions on how to use this script.

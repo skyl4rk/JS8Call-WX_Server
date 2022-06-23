@@ -84,6 +84,14 @@ When you recieve your API_key (probably in an email), go to line +/- 13 of wx_se
 
 Click on the green arrow to run the program. 
 
+help_txt.py and help.txt are separate scripts that can be run along side wx_server and JS8Call. Modify JS8Call settings as follows:
+
+JS8Call File: Settings: Reporting: API, TCP Max Connections, increase by one or more to 2 or more.
+
+Then run help_txt.py in the terminal or with another python editor (geany, for example).
+
+Note that you may change the trigger word in help_txt.py and change the text in help.txt to any text you would like.
+
 To Uninstall:
 
 Delete the folder ~/Environments/wx_env

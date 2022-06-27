@@ -82,7 +82,18 @@ Get an API_key from https://home.openweathermap.org/users/sign_up
 
 When you recieve your API_key (probably in an email), go to line +/- 13 of wx_server-x.x.x and paste it within the quotes of API_key = "Your API key Here"
 
-Click on the green arrow to run the program. 
+Click on the green arrow to run the program in Thonny or other python editor. 
+
+To run the script from terminal, cd to the directory with the wx_server-0.x.x.py file, and set it as executable by entering:
+
+chmod +x wx_server-0.x.x.py
+
+To start the script from terminal, enter:
+
+./wx_server-0.x.x.py
+
+
+Help File
 
 help_txt.py and help.txt are separate scripts that can be run along side wx_server and JS8Call. Modify JS8Call settings as follows:
 

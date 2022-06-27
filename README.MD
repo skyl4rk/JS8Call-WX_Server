@@ -12,27 +12,17 @@ Where "?WX" is the text which triggers a response from the weather forecast serv
 
 Example weather forecast:
 
-WX FOR EN61EV
+WX FOR DN70
+2022-07-01
+overcast clouds
+max 69 F
+min 41 F
+press 1022 hPa
+wind 20 mph
+gust 17 mph
+wind deg 242 deg
 
-2022-06-10 00:00:00
-
-SCATTERED CLOUDS
-
-TEMP 20 C
-
-MAX 20 C
-
-MIN 15 C
-
-PRESS 1013 HPA
-
-WIND SPEED 1.9 M/S
-
-WIND GUST 4.9 M/S
-
-WIND DEG 297 DEG 
-
-This message would take 3 minutes 15 seconds to complete on JS8Call in normal speed mode.
+This message would take about 3 minutes to complete on JS8Call in normal speed mode.
 
 The JS8Call WX_Server will also send a WIND? forecast in a similar manner:
 
@@ -83,6 +73,16 @@ Enable Email
 Start JS8Call
 
 Start wx_server.x.x.x.py in command line or IDE
+
+Click on the green arrow to run the program in Thonny or other python editor. 
+
+To run the script from terminal, cd to the directory with the wx_server-0.x.x.py file, and set it as executable by entering:
+
+chmod +x wx_server-0.x.x.py
+
+To start the script from terminal, cd to the directory with the wx_server-0.x.x.py file, and enter:
+
+./wx_server-0.x.x.py
 
 If the trigger WX? is detected, it will get a weather forecast and send it to the requesting operator.
 

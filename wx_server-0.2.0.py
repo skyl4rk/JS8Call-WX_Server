@@ -299,10 +299,10 @@ while(True):
 # Check for weather trigger
                     if split_message[i] == wx_trigger or split_message[i] == wind_trigger or split_message[i] == email_trigger:
 # The following print can be removed - it is used as a debug test probe - K0OG
-                        print('\n *** Input *** \n', split_message[1], split_message[2], split_message[3], split_message[4], split_message[5], split_message[6])
+                        print('\n *** Input *** \n', split_message[1], split_message[2], split_message[3], split_message[4], split_message[5])
                         if re.search('[0-9]*[0-9]*\.[0-9]*[0-9]*', split_message[4]) and re.search('[0-9]*[0-9]*[0-9]*\.[0-9]*[0-9]*', split_message[5]):
 # The following print can be removed - it is used as a debug test probe - K0OG
-                            print('   ***   Lat/Lon Success   ***\n DAY =', split_message[6], '\n')
+                            print('   ***   Lat/Lon Success   ***\n')
                             try:
                                 latitude = split_message[4]
                                 longitude = split_message[5]
@@ -311,7 +311,7 @@ while(True):
                                 print(e)
                         else:
 # The following print can be removed - it is used as a debug test probe - K0OG
-                            print('\n *** Output ***\n', split_message[1], split_message[2], split_message[3], split_message[4], split_message[5], split_message[6])
+                            print('\n *** Output ***\n', split_message[1], split_message[2], split_message[3], split_message[4], split_message[5])
                             try:
                                 if re.search('[A-Za-z][A-Za-z][0-9][0-9]', split_message[4]):
                                     coords = mh.to_location(split_message[4])

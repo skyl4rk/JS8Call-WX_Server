@@ -19,14 +19,14 @@ default_grid = 'EN61EV'
 ENABLE_EMAIL = False
 #ENABLE_EMAIL = True
 # SMTP email server account information:
-#email_address = "Your Email Address"
-#email_server = "Your SMTP Email Server"
-#email_password = "Your SMTP Email Server Password"
+#email_address = 'Your email address'
+#email_server = 'Your SMTP email server'
+#email_password = 'Your SMTP email server password'
 
 # End User Definition Area
 ##################################
 
-import sys
+#import sys
 import time
 import json
 from js8net import *
@@ -64,7 +64,7 @@ def email_push(request_callsign, recipient_email_address, body_text, SMTP_email_
         send_inbox_message(request_callsign, 'Sorry, email to' + recipient_email_address + ' did not go through.') 
         print(e)
         
-def openweathermap_wind_api_call(forecast_day, user_API_key, display_unit_type, request_callsign, latitude, longitude):
+def openweathermap_wind_api_call(forecast_day, user_API_key, display_unit_type, request_callsign, latitude, longitude, coordinate_check):
     try:
 # Build url for openweathermap request
         base_url = "http://api.openweathermap.org/data/2.5/forecast?"
@@ -94,6 +94,8 @@ def openweathermap_wind_api_call(forecast_day, user_API_key, display_unit_type, 
 # Print header
 # Build WIND_FORECAST tx_string Header Needed City Name in WIND? output
     city_name = str(forecast_json['city']['name']) +'\n'
+    if coordinate_check:
+        city_name = '\n' + str(latitude) + ' ' + str(longitude) + '\n'
     tx_string = ('\nWIND FORECAST for ' + city_name +'\n')
 # Go through data in forecast_json, and select data with requested day of interest
     for count in range(0, 40, 2):
@@ -114,7 +116,7 @@ def openweathermap_wind_api_call(forecast_day, user_API_key, display_unit_type, 
         file.write(return_date_and_time())
         file.write(request_callsign + ' ' + tx_string + '\n')
 
-def openweathermap_wx_api_call(forecast_day, user_API_key, display_unit_type, request_callsign, latitude, longitude):
+def openweathermap_wx_api_call(forecast_day, user_API_key, display_unit_type, request_callsign, latitude, longitude, coordinate_check):
 # Convert from requested day to number of 3 hour weather periods as provided in API
     forecast_period = int(forecast_day * 8)
     if(forecast_period > 39):
@@ -146,6 +148,8 @@ def openweathermap_wx_api_call(forecast_day, user_API_key, display_unit_type, re
         print(e)
 # Build WX_FORECAST
     city_name = str(forecast_json['city']['name']) +'\n'
+    if coordinate_check:
+        city_name = '\n' + str(latitude) + ' ' + str(longitude) + '\n'
 # Pull date and time string out of json
     dt_txt = forecast_json['list'][forecast_period]['dt_txt']
 # Split date separate from date - time
@@ -280,13 +284,6 @@ coords = mh.to_location(default_grid)
 latitude = str(coords[0])
 longitude = str(coords[1])
 
-# TEST
-#wx_trigger = 'HEARTBEAT'
-#wind_trigger = 'HEARTBEAT'
-#email_trigger = 'HEARTBEAT'
-#help_trigger = 'HEARTBEAT'
-# END TEST
-
 ##################
 # BEGIN RUNTIME SECTION
 # Check if anything is in receive queue, if so, get json data
@@ -309,16 +306,25 @@ while(True):
 # Remove colon from incoming request callsign
                 request_call = split_message[0].strip(':')
                 print(directed_message_to_my_call)
+# Initialize coordinate_format as not a decimal lat, lon
+                coordinate_format = False
 # Iterate through split text 
                 item_count = len(split_message)
                 for i in range(item_count):
 # START TRIGGERED RESPONSE SECTION
 # Check for trigger keywords
                     if split_message[i] == wx_trigger or split_message[i] == wind_trigger or split_message[i] == email_trigger or split_message[i] == help_trigger:
-                        print_time()
+# Run email function
+                        if split_message[i] == email_trigger and ENABLE_EMAIL:
+                            recipient_email = split_message[i+1]
+                            message_body = directed_message_to_my_call
+                            print('Message body: ')
+                            print(message_body)
+                            print('End message body.')
+                            email_push(request_call, recipient_email, message_body, email_address, email_server, email_password)
                         if split_message[i] == help_trigger:
                             file_path = '/home/pi/Environments/wx_env/help.txt'
-                            print('HELP? TEST: request_call: ' + request_call)
+                            print('Help file sent to: ' + request_call)
                             with open(file_path) as f:
                                 help_txt = f.read()
                                 send_inbox_message(request_call, help_txt)
@@ -327,15 +333,17 @@ while(True):
                                 file.write(directed_message_to_my_call)
                                 file.write(help_txt)
 # Check for decimal lat and lon format
-                        if re.search('[0-9]*[0-9]*\.[0-9]*[0-9]*', split_message[4]) and re.search('[0-9]*[0-9]*\.[0-9]*[0-9]*', split_message[5]):
+                        if re.search('[0-9]*\.[0-9]*', split_message[4]) and re.search('[0-9]*\.[0-9]*', split_message[5]) and -90 < float(split_message[4]) < 90 and -180 < float(split_message[5]) < 180:
                             try:
                                 latitude = split_message[4]
                                 longitude = split_message[5]
                                 request_day = split_message[6]
+# Toggle coordinate_format to indicate decimal lat, lon status
+                                coordinate_format = True
                             except Exception as e:
                                 print(e)
                         else:
-# Check for decimal lat and lon format
+# Check for grid lat and lon format
                             try:
                                 if re.search('[A-Za-z][A-Za-z][0-9][0-9]', split_message[4]):
                                     coords = mh.to_location(split_message[4])
@@ -365,16 +373,11 @@ while(True):
                             with open('transcript.txt', 'a') as file:
                                 file.write(return_date_and_time())
                                 file.write(directed_message_to_my_call)
-                            openweathermap_wx_api_call(request_day, API_key, unit_type, request_call, latitude, longitude)
+                            openweathermap_wx_api_call(request_day, API_key, unit_type, request_call, latitude, longitude, coordinate_format)
 # Run wind function to print and send wind report
                         if split_message[i] == wind_trigger:
-                            openweathermap_wind_api_call(request_day, API_key, unit_type, request_call, latitude, longitude)
-# Run email function
-                        if split_message[i] == email_trigger and ENABLE_EMAIL:
-                            recipient_email = split_message[i+1]
-                            message_body = directed_message_to_my_call
-                            print('Message body: ')
-                            print(message_body)
-                            print('End message body.')
-                            email_push(request_call, recipient_email, message_body, email_address, email_server, email_password)
-                        split_message[i] = ''
+                            with open('transcript.txt', 'a') as file:
+                                file.write(return_date_and_time())
+                                file.write(directed_message_to_my_call)
+                            openweathermap_wind_api_call(request_day, API_key, unit_type, request_call, latitude, longitude, coordinate_format)
+

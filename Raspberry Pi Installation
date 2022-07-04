@@ -92,18 +92,15 @@ To start the script from terminal, enter:
 
 ./wx_server-0.x.x.py
 
-
 Help File
 
-help_txt.py and help.txt are separate scripts that can be run along side wx_server and JS8Call. Modify JS8Call settings as follows:
+help.txt is a text file which you may modify as needed.  You may wish to delete the reference to email if you are not enabling email responses.
 
-JS8Call File: Settings: Reporting: API, TCP Max Connections, increase by one or more to 2 or more.
+Transcript
 
-Then run help_txt.py in the terminal or with another python editor (geany, for example).
+transcript.txt is a text file which will be used to automatically log every wx, wind, email and help request and response.  You may delete it, but it will automatically be recreated.
 
-Note that you may change the trigger word in help_txt.py and change the text in help.txt to any text you would like.
-
-To Uninstall:
+To Uninstall JS8Call WX_Server:
 
 Delete the folder ~/Environments/wx_env
 

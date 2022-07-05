@@ -20,9 +20,9 @@ default_grid = 'EN61EV'
 ENABLE_EMAIL = False
 #ENABLE_EMAIL = True
 # SMTP email server account information:
-email_address = "Your email address"
-email_server = 'Your SMTP email server'
-email_password = "Your SMTP email server password"
+#email_address = "Your email address"
+#email_server = 'Your SMTP email server'
+#email_password = "Your SMTP email server password"
 
 # End User Definition Area
 ##################################
@@ -99,7 +99,7 @@ def openweathermap_wind_api_call(forecast_day, user_API_key, display_unit_type, 
 # Build WIND_FORECAST tx_string Header Needed City Name in WIND? output
     city_name = str(forecast_json['city']['name']) +'\n'
     if coordinate_check:
-        city_name = '\n' + str(latitude) + ' ' + str(longitude) + '\n'
+        city_name = '\n' + str(forecast_json['city']['name']) +'\n' + str(latitude) + ', ' + str(longitude) + '\n'
     tx_string = ('\nWind Forecast for ' + city_name)
 # Go through data in forecast_json, and select data with requested day of interest
     for count in range(0, 40, 2):
@@ -139,7 +139,7 @@ def openweathermap_wx_api_call(forecast_day, user_API_key, display_unit_type, se
         NOAA_alert = requests.get(NOAA_url).json()
         alert_message = ''
         alert_message = NOAA_alert['features'][0]['properties']['event']
-        alert_message = '\nALERT NOW: ' + alert_message + '\n'
+        alert_message = '\nALERT NOW: ' + alert_message
     except:
         pass
 # Connect to Openweathermap.org API and get json dictionary
@@ -152,7 +152,7 @@ def openweathermap_wx_api_call(forecast_day, user_API_key, display_unit_type, se
 # Build WX_FORECAST
     city_name = str(forecast_json['city']['name']) +'\n'
     if coordinate_check:
-        city_name = '\n' + str(latitude) + ' ' + str(longitude) + '\n'
+        city_name = '\n' + str(forecast_json['city']['name']) +'\n' + str(latitude) + ', ' + str(longitude) + '\n'
 # Pull date and time string out of json
     dt_txt = forecast_json['list'][forecast_period]['dt_txt']
 # Split date separate from date - time
@@ -187,7 +187,7 @@ def openweathermap_wx_api_call(forecast_day, user_API_key, display_unit_type, se
         send_inbox_message(request_callsign, wx_forecast)
         with open('transcript.txt', 'a') as file:
 #            file.write(return_date_and_time())
-            file.write('\n' + my_call + ': ' + request_callsign + ' MSG' + alert_message + wx_forecast + '\n')
+            file.write('\n' + my_call + ': ' + request_callsign + ' MSG' + wx_forecast + '\n')
     except Exception as e:
         print(e)
 
@@ -329,7 +329,7 @@ while(True):
                             email_push(request_call, my_call, recipient_email, message_body, email_address, email_server, email_password)
 # Help file server
                         if split_message[i] == help_trigger:
-                            file_path = '/home/pi/Environments/wx_env/help.txt'
+                            file_path = 'help.txt'
                             print('Help file sent to: ' + request_call)
                             with open(file_path) as f:
                                 help_txt = f.read()
@@ -339,6 +339,7 @@ while(True):
                                 file.write(directed_message_to_my_call + '\n')
                                 file.write('Help file sent to ' + request_call)
 # Check for decimal lat and lon format
+                        split_message[4] = split_message[4].strip(',')
                         if re.search('[0-9]*\.[0-9]*', split_message[4]) and re.search('[0-9]*\.[0-9]*', split_message[5]) and -90 < float(split_message[4]) < 90 and -180 < float(split_message[5]) < 180:
                             try:
                                 latitude = split_message[4]

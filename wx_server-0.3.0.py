@@ -7,7 +7,7 @@
 
 # To display imperial units, remove the hash mark (#) before the line with imperial text in it
 unit_type = 'metric'
-unit_type = 'imperial'
+#unit_type = 'imperial'
 
 # Set the API_key to a key registered under your name at openweathermap.org:
 API_key = 'Your_API_key_Here'

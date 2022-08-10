@@ -27,10 +27,10 @@ email_server = 'your SMTP email server'
 email_password = 'your SMTP email password'
 message_email_address = 'email address to send notifications to'
 # Message beacon settings
-ENABLE_MESSAGE_BEACON_1 = True
+ENABLE_MESSAGE_BEACON_1 = False
 message_period_1 = 121 # Number of minutes between transmissions
 message_file_path_1 = 'qso_party.txt' # Path and file name of message
-ENABLE_MESSAGE_BEACON_2 = True
+ENABLE_MESSAGE_BEACON_2 = False
 message_period_2 = 165 # Number of minutes between transmissions
 message_file_path_2 = 'help_test.txt' # Path and file name of message
 ENABLE_MESSAGE_BEACON_3 = False

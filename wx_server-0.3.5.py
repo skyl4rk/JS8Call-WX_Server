@@ -10,7 +10,7 @@ unit_type = 'metric'
 unit_type = 'imperial'
 
 # Set the API_key to a key registered under your name at openweathermap.org:
-API_key = 'b8daf768cd03d5035a15728377db75f9'
+API_key = 'Your_API_key_Here'
 
 # If no grid is specified or of the wrong format, then a default grid will be used.
 # Set the default maidenhead gridsquare here:
@@ -18,14 +18,14 @@ default_grid = 'EN61EV'
 
 # To enable email forwarding, uncomment ENABLE_EMAIL = True and add email account information below.
 ENABLE_EMAIL = False
-ENABLE_EMAIL = True
+# ENABLE_EMAIL = True
 MSG_EMAIL_NOTIFICATION = False
-MSG_EMAIL_NOTIFICATION = True
+# MSG_EMAIL_NOTIFICATION = True
 # SMTP email server account information:
-email_address = 'kc8wbk@michig.email'
-email_server = 'michig.email'
-email_password = 'm8LoGoVhP]'
-message_email_address = 'lake@michig.email'
+email_address = 'your SMTP email address'
+email_server = 'your SMTP email server'
+email_password = 'your SMTP email password'
+message_email_address = 'email address to send notifications to'
 # Message beacon settings
 ENABLE_MESSAGE_BEACON_1 = True
 message_period_1 = 121 # Number of minutes between transmissions

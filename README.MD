@@ -2,7 +2,11 @@ JS8Call WX_Server
 
 JS8Call is a low power digital mode application which uses amateur radio to provide keyboard to keyboard communication. It can be used to exchange text messages and for real-time text chat. 
 
-JS8Call WX_Server is a python script which connects to JS8Call and runs at the same time that JS8Call is running.  It allows an operator of a JS8Call station connected to the internet to provide a brief weather forecast for any latitude/longitude or maidenhead grid location to a an operator requesting a forecast.
+JS8_Call WX_Server is written using python version 3.7.3 and should run on python3.
+
+JS8Call WX_Server is a python script which connects to JS8Call and runs at the same time that JS8Call is running.  Upon request from another station, WX_Server can provide a weather forecast, wind forecast and send email out.  At the home station, WX_Server will send an email to the operator when a message is received in the inbox, send repeating messages (message beacons), and save a transcript of all directed messages to the operator. 
+
+The WX? function allows an operator of a JS8Call station connected to the internet to provide a brief weather forecast for any latitude/longitude or maidenhead grid location to a an operator requesting a forecast.
 
 The requesting operator sends a directed call to the weather forecast server:
 
@@ -13,24 +17,38 @@ Where "?WX" is the text which triggers a response from the weather forecast serv
 Example weather forecast:
 
 WX FOR DN70
+
 2022-07-01
+
 overcast clouds
+
 max 69 F
+
 min 41 F
+
 press 1022 hPa
+
 wind 20 mph
+
 gust 17 mph
+
 wind deg 242 deg
 
 This message would take about 3 minutes to complete on JS8Call in normal speed mode.
 
-The JS8Call WX_Server will also send a WIND? forecast in a similar manner:
+The JS8Call WX_Server will send a WIND? forecast in a similar manner:
 
 WIND? "grid" "days in future (0-5)"
 
-If configured, it will also allow sending an email out:
+If configured with SMTP email account info, it will also allow another station to send an email out by sending a directed message in the following format:
 
 EMAIL? "email address" "message" 
+
+WX_Server will send an email to the operator when a message is received in the inbox.
+
+WX_Server saves a log of all messages directed to your station in transcript.txt.
+
+WX_Server will send out up to 5 repeating messages (message beacons) from text files, and you may set the time period between transmissions.
 
 The JS8Net library is courtesy of Jeff Francis, the project is at: https://github.com/jfrancis42/js8net
 
